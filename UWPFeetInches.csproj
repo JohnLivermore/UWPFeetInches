@@ -123,8 +123,6 @@
     <Compile Include="FeetInches.xaml.cs">
       <DependentUpon>FeetInches.xaml</DependentUpon>
     </Compile>
-    <Compile Include="FormTextBox.cs" />
-    <Compile Include="IFormControl.cs" />
     <Compile Include="MainPage.xaml.cs">
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
