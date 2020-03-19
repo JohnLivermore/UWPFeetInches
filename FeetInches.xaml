@@ -11,7 +11,7 @@
 
     <StackPanel Orientation="Horizontal">
         <TextBlock Text="Reading:" VerticalAlignment="Bottom" Margin="0,0,10,10"/>
-        <controls:FormTextBox Header="Feet" 
+        <!--<controls:FormTextBox Header="Feet" 
                               Margin="0,0,10,0"
                               Text="{x:Bind Feet, Mode=TwoWay}" 
                               DataType="Decimal" 
@@ -19,6 +19,6 @@
         <controls:FormTextBox Header="Inches" 
                               Text="{x:Bind Inches, Mode=TwoWay, Converter={StaticResource DecimalConverter}}" 
                               DataType="Decimal" 
-                              Format="0.00" />
+                              Format="0.00" />-->
     </StackPanel>
 </UserControl>

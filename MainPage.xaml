@@ -4,8 +4,15 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="using:UWPFeetInches.Converters"
     mc:Ignorable="d"
     Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Page.Resources>
+        <ResourceDictionary>
+            <local:DecimalConverter x:Key="DecimalConverter" />
+        </ResourceDictionary>
+    </Page.Resources>
 
     <Grid Margin="10">
         <Grid.RowDefinitions>
@@ -25,7 +32,7 @@
                     Orientation="Horizontal">
             <TextBlock Margin="0,0,10,0"
                        Text="Inches:"/>
-            <TextBlock Text="{x:Bind ViewModel.Inches, Mode=TwoWay}"/>
+            <TextBlock Text="{x:Bind ViewModel.Inches, Mode=TwoWay, Converter={StaticResource DecimalConverter}}"/>
         </StackPanel>
     </Grid>
 </Page>
