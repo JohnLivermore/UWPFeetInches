@@ -2,9 +2,9 @@
 
 using Windows.UI.Xaml.Data;
 
-namespace UWPFeetInches.Converters
+namespace UWPFeetInches
 {
-    public sealed class DecimalConverter : IValueConverter
+    public sealed class NullDecimalConverter : IValueConverter
     {
         public object Convert(object value, Type targetType, object parameter, string language)
         {
@@ -17,14 +17,14 @@ namespace UWPFeetInches.Converters
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            if (value != null)
+            if (!string.IsNullOrWhiteSpace(value?.ToString()))
             {
                 if (Decimal.TryParse(value.ToString(), out decimal m))
                 {
                     return m;
                 }
             }
-            return 0m;
+            return null;
         }
     }
 }

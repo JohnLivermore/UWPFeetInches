@@ -34,7 +34,7 @@ namespace UWPFeetInches
 
     public class InchesViewModel : INotifyPropertyChanged
     {
-        private decimal? _Inches { get; set; }
+        private decimal? _Inches;
         public decimal? Inches
         {
             get { return _Inches; }
@@ -43,7 +43,25 @@ namespace UWPFeetInches
                 if (value != _Inches)
                 {
                     _Inches = value;
+
+                    InchesDisplay = _Inches == null ? "{null}" : _Inches.ToString();
+
                     PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(Inches)));
+                }
+            }
+        }
+
+        private string _InchesDisplay;
+        public string InchesDisplay
+        {
+            get { return _InchesDisplay; }
+            set
+            {
+                if (value != _InchesDisplay)
+                {
+                    _InchesDisplay = value;
+
+                    PropertyChanged.Invoke(this, new PropertyChangedEventArgs(nameof(InchesDisplay)));
                 }
             }
         }

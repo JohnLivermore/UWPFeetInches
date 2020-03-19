@@ -16,7 +16,10 @@ namespace UWPFeetInches
         public int Feet
         {
             get { return (int)GetValue(FeetProperty); }
-            set { SetValue(FeetProperty, value); }
+            set
+            {
+                SetValue(FeetProperty, value);
+            }
         }
 
         public static readonly DependencyProperty FeetProperty = DependencyProperty.Register(nameof(Feet), typeof(int), typeof(FeetInches), new PropertyMetadata(0, OnPropertyChanged));
@@ -26,7 +29,10 @@ namespace UWPFeetInches
         public decimal Inches
         {
             get { return (decimal)GetValue(InchesProperty); }
-            set { SetValue(InchesProperty, value); }
+            set
+            {
+                SetValue(InchesProperty, value);
+            }
         }
 
         public static readonly DependencyProperty InchesProperty = DependencyProperty.Register(nameof(Inches), typeof(decimal), typeof(FeetInches), new PropertyMetadata(0M, OnPropertyChanged));
@@ -35,22 +41,25 @@ namespace UWPFeetInches
         #region Value
         public decimal? Value
         {
-            get
-            {
-                return Feet * 12 + Inches;
-            }
-            set
-            {
-                Feet = value.HasValue ? (int)(value.Value / 12M) : 0;
-                Inches = value.HasValue ? value.Value - (Feet * 12M) : 0M;
-            }
+            get { return (decimal)GetValue(ValueProperty); }
+            set { SetValue(ValueProperty, value); }
         }
 
-        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(int), typeof(FeetInches), new PropertyMetadata(null));
+        public static readonly DependencyProperty ValueProperty = DependencyProperty.Register(nameof(Value), typeof(decimal?), typeof(FeetInches), new PropertyMetadata(null, ValueOnPropertyChanged));
         #endregion
 
         private static void OnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
         {
+            var control = d as FeetInches;
+            control.Value = control.Feet * 12 + control.Inches;
+        }
+
+        private static void ValueOnPropertyChanged(DependencyObject d, DependencyPropertyChangedEventArgs e)
+        {
+            var control = d as FeetInches;
+            var inches = control.Value;
+            control.Feet = inches.HasValue ? (int)(inches.Value / 12M) : 0;
+            control.Inches = inches.HasValue ? inches.Value - (control.Feet * 12M) : 0M;
         }
     }
 }

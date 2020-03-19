@@ -119,7 +119,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <Compile Include="DecimalConverter.cs" />
+    <Compile Include="NullDecimalConverter.cs" />
     <Compile Include="FeetInches.xaml.cs">
       <DependentUpon>FeetInches.xaml</DependentUpon>
     </Compile>
